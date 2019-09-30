@@ -1,0 +1,27 @@
+{
+    "dependencies": {
+        "@babel/core": "^7.6.2",
+        "@babel/node": "^7.6.2",
+        "@babel/plugin-proposal-class-properties": "^7.5.5",
+        "@babel/preset-env": "^7.6.2",
+        "awilix": "^4.2.2",
+        "babel-cli": "^6.26.0",
+        "decamelize": "^3.2.0",
+        "exec": "^0.2.1",
+        "iohook": "^0.6.1",
+        "jest": "^24.8.0",
+        "pm2": "^3.5.1",
+        "robotjs": "^0.5.1",
+        "rxjs": "^6.5.3",
+        "udev": "^0.6.0",
+        "winston": "^3.2.1"
+    },
+    "devDependencies": {
+        "eslint": "^5.16.0",
+        "eslint-config-airbnb-base": "^13.2.0",
+        "eslint-plugin-import": "^2.18.2"
+    },
+    "scripts": {
+        "start": "pm2 start . --watch ./"
+    }
+}
