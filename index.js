@@ -13,6 +13,7 @@ container.loadModules(['./services/services.**.js'], {
   },
 })
 
+// config
 container.register({
   audio_service_config: awilix.asValue({
     system_backlight_path: '/sys/class/backlight/intel_backlight',
