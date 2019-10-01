@@ -1,4 +1,6 @@
-# i3-extras
+# nxkb
+
+node Xorg keyboard bindings
 
 ## Background
 I use Fedora and [i3](https://i3wm.org/) as the window manager, but the fn keys and touchpad seems not to work, so I made this project for 2 purposes
@@ -8,16 +10,16 @@ I use Fedora and [i3](https://i3wm.org/) as the window manager, but the fn keys 
 ## Installation
 ```
 npm i -g pm2
-git clone https://github.com/ecpy/i3-extras
+git clone https://github.com/ecpy/nxkb
 ```
 
-- create /etc/systemd/system/i3-extras.service
+- create /etc/systemd/system/nxkb.service
 ```
-Description=i3-extras.service
+Description=nxkb.service
 
 [Service]
 Type=simple
-ExecStart=/bin/zsh -c "pm2 start /home/${USER}/i3-extras"
+ExecStart=/bin/zsh -c "pm2 start /home/${USER}/nxkb"
 Restart=on-failure
 RestartSec=2
 KillMode=process
@@ -25,6 +27,6 @@ KillMode=process
 [Install]
 WantedBy=multi-user.target
 ```
-- auto start: ``` systemctl enable i3-extras.service ```
+- auto start: ``` systemctl enable nxkb.service ```
 
 
