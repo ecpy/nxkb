@@ -20,6 +20,6 @@ container.register({
   }),
 })
 
-const i3_service = container.resolve('i3_service')
+const app_service = container.resolve('app_service')
 
-i3_service.start()
+app_service.start()

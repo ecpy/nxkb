@@ -1,4 +1,4 @@
-class i3Service {
+class AppService {
   constructor({
     input_service, audio_service, backlight_service, log_service,
   }) {
@@ -179,4 +179,4 @@ class i3Service {
   }
 }
 
-module.exports = i3Service
+module.exports = AppService
