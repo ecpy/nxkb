@@ -19,7 +19,7 @@ Description=nxkb.service
 
 [Service]
 Type=simple
-ExecStart=/bin/zsh -c "pm2 start /home/${USER}/nxkb"
+ExecStart=/bin/sh -c "pm2 start /home/${USER}/nxkb"
 Restart=on-failure
 RestartSec=2
 KillMode=process
@@ -27,6 +27,11 @@ KillMode=process
 [Install]
 WantedBy=multi-user.target
 ```
-- auto start: ``` systemctl enable nxkb.service ```
+- auto. start now and on startup: 
+``` 
+systemctl enable nxkb.service
+systemctl start nxkb.service
+
+```
 
 
