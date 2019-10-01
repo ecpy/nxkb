@@ -12,11 +12,11 @@ class LogService {
   create_logger() {
     return winston.createLogger({
       format: format.combine(
-        format.label({ label: 'i3-services' }),
+        format.label({ label: 'nxkb' }),
         format.timestamp(),
         winston.format.json(),
       ),
-      defaultMeta: { service: 'i3' },
+      defaultMeta: { service: 'nxkb' },
       transports: [new winston.transports.Console()],
     })
   }
