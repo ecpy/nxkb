@@ -1,3 +1,8 @@
+const exec = require('exec')
+// eslint-disable-next-line import/newline-after-import
+const udev = require('udev')
+const monitor = udev.monitor('input')
+
 class AppService {
   constructor({
     input_service, audio_service, backlight_service, log_service,
@@ -8,10 +13,11 @@ class AppService {
     this.log_service = log_service
 
     this.start = this.start.bind(this)
-    this.input_service.start()
   }
 
   start() {
+    this.input_service.start()
+
     // binding_key_event_actions
     {
       const { input_service } = this
@@ -90,7 +96,6 @@ class AppService {
         .pipe(action_key_streams_switch)
         .pipe(filter(e => e && e.keycode === KEYCODE_PRTSC && e.type === 'keydown'))
         .subscribe(() => {
-          const exec = require('exec')
           exec('gnome-screenshot', () => {})
         })
 
@@ -132,10 +137,6 @@ class AppService {
 
     // restart_keymap_on_keyboard_plugging_events
     {
-      const exec = require('exec')
-      const udev = require('udev')
-      const monitor = udev.monitor('input')
-
       const self = this
 
       // eslint-disable-next-line no-inner-declarations
