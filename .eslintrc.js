@@ -14,6 +14,7 @@ module.exports = {
 	},
 	rules: {
 		camelcase: 0,
+		'import/newline-after-import': 0,
 		'global-require': 0,
 		'import/no-unresolved': 0,
 		semi: [2, 'never'],
