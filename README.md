@@ -7,31 +7,19 @@ I use Fedora and [i3](https://i3wm.org/) as the window manager, but the fn keys 
 - provide keyboard shortcuts to control volume, backlight, mouse, screenshots
 - try the [Awilix](https://github.com/jeffijoe/awilix#readme) DI framework, [RxJs](https://rxjs-dev.firebaseapp.com/), [PM2](http://pm2.keymetrics.io/) and other nodejs libraries
 
+## Code Structure
+
+
 ## Installation
 ```
 npm i -g pm2
 git clone https://github.com/ecpy/nxkb
+chmod +x ~/nxkb/start.sh
+echo 'pm2 start ~/nxkb' > ~/.xinitrc
+. ~/nxkb/start.sh
 ```
 
-- create /etc/systemd/system/nxkb.service
+## Pending works
 ```
-Description=nxkb.service
-
-[Service]
-Type=simple
-ExecStart=/bin/sh -c "pm2 start /home/${USER}/nxkb"
-Restart=on-failure
-RestartSec=2
-KillMode=process
-
-[Install]
-WantedBy=multi-user.target
+services.permission.js - manage permissions of services on executing commands
 ```
-- auto. start now and on startup: 
-``` 
-systemctl enable nxkb.service
-systemctl start nxkb.service
-
-```
-
-
