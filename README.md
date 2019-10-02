@@ -19,3 +19,4 @@ pm2 start nxkb
 
 ## Pending works
 - services.permission.js - manage permissions of services on executing commands
+- make app key bindings more config by config.yml
