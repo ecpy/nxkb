@@ -8,7 +8,7 @@ class AppService {
     this.log_service = log_service
 
     this.start = this.start.bind(this)
-    this.input_service.start_service()
+    this.input_service.start()
   }
 
   start() {
@@ -143,6 +143,7 @@ class AppService {
         if (exec_Xmodmap.is_running) return
         exec_Xmodmap.is_running = true
 
+        // xmodmap .Xmodmap
         const command = '/home/edward/.xinitrc.keymap'
         exec(command, (err, stdout, stderr) => {
           if (err) {
@@ -151,8 +152,8 @@ class AppService {
               message: `restart_keymap_on_keyboard_plugging_events: error: ${JSON.stringify(err)}`,
             })
             self.log_service.log({
-              level: 'error',
-              message: 'restart_keymap_on_keyboard_plugging_events: error: retrying',
+              level: 'info',
+              message: 'restart_keymap_on_keyboard_plugging_events: retrying',
             })
             setTimeout(() => {
               exec_Xmodmap.is_running = false
@@ -176,6 +177,10 @@ class AppService {
         }
       })
     }
+  }
+
+  stop() {
+    this.input_service.stop()
   }
 }
 
