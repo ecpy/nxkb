@@ -16,7 +16,8 @@ class BacklightService {
 
   get_brightness() {
     return new Promise((resolve, reject) => {
-      const command = `cat ${this.current_brightness_path}`
+      // TODO: future change: permission_service will manage sudo
+      const command = `sudo cat ${this.current_brightness_path}`
       exec(command, (err, stdout, stderr) => {
         if (err) {
           this.log_service.log({
@@ -40,7 +41,9 @@ class BacklightService {
   set_brightness(value) {
     return new Promise(async (resolve, reject) => {
       // const command = `echo ${user_pwd} | sudo -S bash -c 'echo ${value} > ${current_brightness_path}'`
-      const command = `bash -c 'echo ${value} > ${this.current_brightness_path}'`
+
+      // TODO: future change: permission_service will manage sudo
+      const command = `sudo bash -c 'echo ${value} > ${this.current_brightness_path}'`
       exec(command, (err, stdout, stderr) => {
         if (err) {
           this.log_service.log({
@@ -61,7 +64,8 @@ class BacklightService {
 
   get_max_brightness() {
     return new Promise((resolve, reject) => {
-      const command = `cat ${this.max_brightness_path}`
+      // TODO: future change: permission_service will manage sudo
+      const command = `sudo cat ${this.max_brightness_path}`
       exec(command, (err, stdout, stderr) => {
         if (err) {
           reject(stderr)
