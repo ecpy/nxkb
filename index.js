@@ -3,7 +3,8 @@ const decamelize = require('decamelize')
 
 const container = awilix.createContainer()
 
-container.loadModules(['./services/services.**.js'], {
+// DI
+container.loadModules(['./services/services.**.js', './utils/utils.**.js'], {
   cwd: __dirname,
   formatName: (_, descriptor) => decamelize(descriptor.value.name),
   resolverOptions: {
@@ -22,4 +23,12 @@ container.register({
 
 const app_service = container.resolve('app_service')
 
+const node_service = container.resolve('node_service')
+
 app_service.start()
+
+// cleanup
+node_service.on_exit((kill) => {
+  app_service.stop()
+  kill()
+})
