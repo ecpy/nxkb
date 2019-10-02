@@ -7,9 +7,6 @@ I use Fedora and [i3](https://i3wm.org/) as the window manager, but the fn keys 
 - provide keyboard shortcuts to control volume, backlight, mouse, screenshots
 - try the [Awilix](https://github.com/jeffijoe/awilix#readme) DI framework, [RxJs](https://rxjs-dev.firebaseapp.com/), [PM2](http://pm2.keymetrics.io/) and other nodejs libraries
 
-## Code Structure
-
-
 ## Installation
 ```
 npm i -g pm2
@@ -20,6 +17,4 @@ echo 'pm2 start ~/nxkb' > ~/.xinitrc
 ```
 
 ## Pending works
-```
-services.permission.js - manage permissions of services on executing commands
-```
+- services.permission.js - manage permissions of services on executing commands
