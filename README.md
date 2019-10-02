@@ -13,7 +13,8 @@ npm i -g pm2
 git clone https://github.com/ecpy/nxkb
 chmod +x ~/nxkb/start.sh
 echo 'pm2 start ~/nxkb' > ~/.xinitrc
-. ~/nxkb/start.sh
+cd ~
+pm2 start nxkb
 ```
 
 ## Pending works
