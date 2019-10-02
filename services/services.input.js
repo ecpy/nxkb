@@ -152,7 +152,7 @@ class InputService {
     }
   }
 
-  start_service() {
+  start() {
     if (this.is_started) return
     this.is_started = true
 
