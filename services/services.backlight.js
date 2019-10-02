@@ -1,9 +1,9 @@
 const exec = require('exec')
 
 class BacklightService {
-  constructor({ backlight_service_config, log_service }) {
+  constructor({ app_config, log_service }) {
     this.log_service = log_service
-    const { system_backlight_path } = backlight_service_config
+    const { system_backlight_path } = app_config
     this.current_brightness_path = `${system_backlight_path}/brightness`
     this.max_brightness_path = `${system_backlight_path}/max_brightness`
 
