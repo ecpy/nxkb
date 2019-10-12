@@ -1,6 +1,6 @@
 function deepclone(obj) {
   return JSON.parse(JSON.stringify(obj))
-}
+    }
 
 describe('pointer', () => {
   // restore mocks

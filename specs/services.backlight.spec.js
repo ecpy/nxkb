@@ -1,11 +1,10 @@
 describe('services.backlight', () => {
-
   const {
-    get_backlight_service
+    get_backlight_service,
   } = require('./../services.backlight')
 
   const backlight_service = get_backlight_service({
-    system_backlight_path: undefined
+    system_backlight_path: undefined,
   })
 
   describe('::get_brightness', () => {
@@ -54,5 +53,4 @@ describe('services.backlight', () => {
       expect(get_value).equal(test_value)
     } catch (err) {}
   })
-
 })

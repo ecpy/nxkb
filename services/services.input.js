@@ -1,7 +1,6 @@
 const ioHook = require('iohook')
 const robot = require('robotjs')
 const exec = require('exec')
-
 const DEBUG_MODE = false
 
 class InputService {

@@ -166,6 +166,7 @@ class AppService {
               level: 'info',
               message: 'restart_keymap_on_keyboard_plugging_events: restart keymap successfully',
             })
+            exec('notify-send "reload keymap"', () => {})
             exec_Xmodmap.is_running = false
           }
         })
@@ -174,7 +175,7 @@ class AppService {
 
       monitor.on('add', (device) => {
         if (device['.INPUT_CLASS'] === 'kbd') {
-          exec_Xmodmap()
+          setTimeout(exec_Xmodmap, 50)
         }
       })
     }

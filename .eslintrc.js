@@ -17,8 +17,11 @@ module.exports = {
 		'import/newline-after-import': 0,
 		'global-require': 0,
 		'import/no-unresolved': 0,
+		'class-methods-use-this': 0,
+		'no-tabs': 0,
+		'indent': ['tab'],
 		semi: [2, 'never'],
-		indent: [2],
+		indent: ["error", 2],
 		'symbol-description': 0,
 	},
 }
