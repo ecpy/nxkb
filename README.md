@@ -11,7 +11,6 @@ I made this project for 2 purposes
 ```
 npm i -g pm2
 git clone https://github.com/ecpy/nxkb
-chmod +x ~/nxkb/start.sh
 echo 'pm2 start ~/nxkb' > ~/.xinitrc
 cd ~
 pm2 start nxkb
