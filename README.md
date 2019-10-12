@@ -5,7 +5,7 @@ node Xorg keyboard bindings
 ## Background
 I made this project for 2 purposes
 - provide keyboard shortcuts to control volume, backlight, mouse, screenshots
-- try the [Awilix](https://github.com/jeffijoe/awilix#readme) DI framework, [RxJs](https://rxjs-dev.firebaseapp.com/), [PM2](http://pm2.keymetrics.io/) and other nodejs libraries
+- try the [Awilix](https://github.com/jeffijoe/awilix#readme) DI framework, [RxJs](https://rxjs-dev.firebaseapp.com/), [PM2](http://pm2.keymetrics.io/), some nodejs libraries and logging layer structure.
 
 ## Installation
 ```
