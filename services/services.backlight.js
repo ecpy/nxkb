@@ -4,6 +4,7 @@ class BacklightService {
   constructor({ app_config, log_service }) {
     this.log_service = log_service
     const { system_backlight_path } = app_config
+    this.app_config = app_config
     this.current_brightness_path = `${system_backlight_path}/brightness`
     this.max_brightness_path = `${system_backlight_path}/max_brightness`
 
@@ -12,12 +13,12 @@ class BacklightService {
     this.get_max_brightness = this.get_max_brightness.bind(this)
     this.inc_brightness = this.inc_brightness.bind(this)
     this.dec_brightness = this.dec_brightness.bind(this)
- }
+  }
 
   get_brightness() {
     return new Promise((resolve, reject) => {
       // TODO: future change: permission_service will manage sudo
-      const command = `sudo cat ${this.current_brightness_path}`
+      const command = `cat ${this.current_brightness_path}`
       exec(command, (err, stdout, stderr) => {
         if (err) {
           this.log_service.log({
@@ -40,10 +41,11 @@ class BacklightService {
 
   set_brightness(value) {
     return new Promise(async (resolve, reject) => {
-      // const command = `echo ${user_pwd} | sudo -S bash -c 'echo ${value} > ${current_brightness_path}'`
+      const { root_pwd } = this.app_config
+      const command = `echo ${root_pwd} | sudo -S bash -c 'echo ${value} > ${this.current_brightness_path}'`
 
       // TODO: future change: permission_service will manage sudo
-      const command = `sudo bash -c 'echo ${value} > ${this.current_brightness_path}'`
+      // const command = `sudo bash -c 'echo ${value} > ${this.current_brightness_path}'`
 
       this.log_service.log({
         level: 'info',
@@ -97,8 +99,8 @@ class BacklightService {
         let new_brightness = current_brightness - decrement
         new_brightness = new_brightness < 0 ? 0 : new_brightness
         const result = await this.set_brightness(new_brightness)
-        resolve(result)
         this.dec_brightness.is_running = false
+        resolve(result)
       } catch (err) {
         this.dec_brightness.is_running = false
         reject(err)
@@ -125,8 +127,8 @@ class BacklightService {
         let new_brightness = current_brightness + increment
         new_brightness = new_brightness > max_brightness ? max_brightness : new_brightness
         const result = await this.set_brightness(new_brightness)
-        resolve(result)
         this.inc_brightness.is_running = false
+        resolve(result)
       } catch (err) {
         this.inc_brightness.is_running = false
         reject(err)

@@ -53,7 +53,7 @@ class LogUtility {
         const calls = []
         if (self.config.full_trace) {
           __stack.forEach(call => calls.push({ line: call.getLineNumber(), func: call.getFunctionName(), file: call.getFileName() }))
-        }else{
+        } else {
           const call = __stack[self.config.trace_level]
           calls.push({ line: call.getLineNumber(), func: call.getFunctionName(), file: call.getFileName() })
         }

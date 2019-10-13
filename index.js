@@ -18,6 +18,7 @@ container.loadModules(['./services/services.**.js', './utils/utils.**.js'], {
 container.register({
   app_config: awilix.asValue({
     system_backlight_path: '/sys/class/backlight/intel_backlight',
+    root_pwd: '${ROOT_PWD}',
   }),
 })
 

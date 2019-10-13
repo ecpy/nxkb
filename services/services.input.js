@@ -109,36 +109,36 @@ class InputService {
         if (current_velocity > 15) return
 
         switch (direction) {
-          case pointer.POS_LEFT_DOWN:
-            pointer.state.velocity.x -= value * diagonal_ratio
-            pointer.state.velocity.y += value * diagonal_ratio
-            break
-          case pointer.POS_LEFT:
-            pointer.state.velocity.x -= value
-            break
-          case pointer.POS_LEFT_UP:
-            pointer.state.velocity.x -= value * diagonal_ratio
-            pointer.state.velocity.y -= value * diagonal_ratio
-            break
-          case pointer.POS_DOWN:
-            pointer.state.velocity.y += value
-            break
-          case pointer.POS_UP:
-            pointer.state.velocity.y -= value
-            break
-          case pointer.POS_RIGHT_UP:
-            pointer.state.velocity.x += value * diagonal_ratio
-            pointer.state.velocity.y -= value * diagonal_ratio
-            break
-          case pointer.POS_RIGHT:
-            pointer.state.velocity.x += value
-            break
-          case pointer.POS_RIGHT_DOWN:
-            pointer.state.velocity.x += value * diagonal_ratio
-            pointer.state.velocity.y += value * diagonal_ratio
-            break
-          default:
-            break
+        case pointer.POS_LEFT_DOWN:
+          pointer.state.velocity.x -= value * diagonal_ratio
+          pointer.state.velocity.y += value * diagonal_ratio
+          break
+        case pointer.POS_LEFT:
+          pointer.state.velocity.x -= value
+          break
+        case pointer.POS_LEFT_UP:
+          pointer.state.velocity.x -= value * diagonal_ratio
+          pointer.state.velocity.y -= value * diagonal_ratio
+          break
+        case pointer.POS_DOWN:
+          pointer.state.velocity.y += value
+          break
+        case pointer.POS_UP:
+          pointer.state.velocity.y -= value
+          break
+        case pointer.POS_RIGHT_UP:
+          pointer.state.velocity.x += value * diagonal_ratio
+          pointer.state.velocity.y -= value * diagonal_ratio
+          break
+        case pointer.POS_RIGHT:
+          pointer.state.velocity.x += value
+          break
+        case pointer.POS_RIGHT_DOWN:
+          pointer.state.velocity.x += value * diagonal_ratio
+          pointer.state.velocity.y += value * diagonal_ratio
+          break
+        default:
+          break
         }
       },
     }
