@@ -34,7 +34,7 @@ class AppService {
 
       const { filter, switchMap, tap } = require('rxjs/operators')
 
-      const KEYCODE_FN = 29
+      const KEYCODE_FN = 3675 // for ubuntu
       const KEYCODE_DEC_BACKLIGHT_ACTION = 63
       const KEYCODE_INC_BACKLIGHT_ACTION = 64
 
@@ -46,6 +46,7 @@ class AppService {
       const KEYCODES_VIR_NUMPAD = [24, 23, 22, 39, 38, 37, 36, 35, 52, 51, 50]
 
       const fn_keys_filter = filter(e => e.keycode === KEYCODE_FN)
+      //const fn_keys_down_only_switchMap = switchMap(e => (e.type == 'keydown'))
       const action_key_streams_switch = switchMap(e => (e.type === 'keydown' ? key_event$ : empty()))
 
       // decrease backlight: mod + F5
@@ -115,7 +116,7 @@ class AppService {
       key_event$
         .pipe(fn_keys_filter)
         .pipe(action_key_streams_switch)
-        .pipe(filter(e => e && KEYCODES_VIR_NUMPAD.includes(e.keycode) && e.type === 'keydown'))
+        .pipe(filter(e => e && KEYCODES_VIR_NUMPAD.includes(e.keycode) && e.type === 'keydown' && e.shiftKey === false))
         .subscribe((e) => {
           if (e.keycode === 22) {
             input_service.pointer.click({ button: 'left' })
@@ -133,6 +134,8 @@ class AppService {
             direction: keycode_to_pointer_direction_map[e.keycode],
           })
         })
+
+	
     }
 
     // restart_keymap_on_keyboard_plugging_events
@@ -171,13 +174,13 @@ class AppService {
           }
         })
       }
-      exec_Xmodmap()
+      //exec_Xmodmap()
 
-      monitor.on('add', (device) => {
-        if (device['.INPUT_CLASS'] === 'kbd') {
-          setTimeout(exec_Xmodmap, 50)
-        }
-      })
+      //monitor.on('add', (device) => {
+      //  if (device['.INPUT_CLASS'] === 'kbd') {
+      //    setTimeout(exec_Xmodmap, 50)
+      //  }
+      //})
     }
   }
 

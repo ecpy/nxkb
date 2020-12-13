@@ -41,11 +41,8 @@ class BacklightService {
 
   set_brightness(value) {
     return new Promise(async (resolve, reject) => {
-      const { root_pwd } = this.app_config
-      const command = `echo ${root_pwd} | sudo -S bash -c 'echo ${value} > ${this.current_brightness_path}'`
-
-      // TODO: future change: permission_service will manage sudo
-      // const command = `sudo bash -c 'echo ${value} > ${this.current_brightness_path}'`
+      // const command = `echo ${root_pwd} | sudo -S bash -c 'echo ${value} > ${this.current_brightness_path}'`
+      const command = `echo ${value} > ${this.current_brightness_path}`
 
       this.log_service.log({
         level: 'info',
@@ -68,7 +65,7 @@ class BacklightService {
   get_max_brightness() {
     return new Promise((resolve, reject) => {
       // TODO: future change: permission_service will manage sudo
-      const command = `sudo cat ${this.max_brightness_path}`
+      const command = `cat ${this.max_brightness_path}`
       exec(command, (err, stdout, stderr) => {
         if (err) {
           reject(stderr)
