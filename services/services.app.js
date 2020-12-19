@@ -30,13 +30,22 @@ class AppService {
         on_key_event,
       }))
 
+
       const { empty } = require('rxjs')
 
       const { filter, switchMap, tap } = require('rxjs/operators')
+      // debug
+      // key_event$.subscribe(e => {
+      //   // console.log(e)
+      // })
 
-      const KEYCODE_FN = 3675 // for ubuntu
-      const KEYCODE_DEC_BACKLIGHT_ACTION = 63
-      const KEYCODE_INC_BACKLIGHT_ACTION = 64
+      // 65515
+      // 65282
+      // 65283
+
+      const KEYCODE_FN = 56 // for ubuntu
+      const KEYCODE_DEC_BACKLIGHT_ACTION = 65283
+      const KEYCODE_INC_BACKLIGHT_ACTION = 65282
 
       const KEYCODE_MUTE_VOL_ACTION = 59
       const KEYCODE_DEC_VOLUME_ACTION = 60
@@ -53,14 +62,14 @@ class AppService {
       key_event$
         .pipe(fn_keys_filter)
         .pipe(action_key_streams_switch)
-        .pipe(filter(e => e && e.keycode === KEYCODE_DEC_BACKLIGHT_ACTION && e.type === 'keydown'))
+        .pipe(filter(e => e && e.rawcode === KEYCODE_DEC_BACKLIGHT_ACTION && e.type === 'keydown'))
         .subscribe(backlight_service.dec_brightness)
 
       // increase backlight: mod + F6
       key_event$
         .pipe(fn_keys_filter)
         .pipe(action_key_streams_switch)
-        .pipe(filter(e => e && e.keycode === KEYCODE_INC_BACKLIGHT_ACTION && e.type === 'keydown'))
+        .pipe(filter(e => e && e.rawcode === KEYCODE_INC_BACKLIGHT_ACTION && e.type === 'keydown'))
         .subscribe(backlight_service.inc_brightness)
 
       // increase volume: mod + F3

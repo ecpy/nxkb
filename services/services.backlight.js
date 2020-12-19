@@ -40,9 +40,13 @@ class BacklightService {
   }
 
   set_brightness(value) {
+
+    value = Math.round(value)
+
     return new Promise(async (resolve, reject) => {
       // const command = `echo ${root_pwd} | sudo -S bash -c 'echo ${value} > ${this.current_brightness_path}'`
-      const command = `echo ${value} > ${this.current_brightness_path}`
+      // const command = `whoami`
+      const command = `echo ${value} | tee ${this.current_brightness_path}`
 
       this.log_service.log({
         level: 'info',
@@ -56,6 +60,10 @@ class BacklightService {
           })
           reject(err)
         } else {
+          this.log_service.log({
+            level: 'info',
+            message: `set brightness result: ${stdout}`,
+          })
           resolve(stdout)
         }
       })
