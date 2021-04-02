@@ -17,5 +17,5 @@ pm2 start nxkb
 ```
 
 ## Pending works
-- services.permission.js - it will use node-gyp to build setuid .bin for nxkb to execute clients' command in sudo mode.
+- services.permission.js - it will use node-gyp to build setuid .bin for nxkb to execute clients' command in root mode.
 - make app key bindings more configurable by config.yml
